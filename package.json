@@ -1,0 +1,11 @@
+{
+    "name": "modulesapp",
+    "version": "1.0.0",
+    "dependencies": {
+        "express": "^4.16.4",
+        "jasmine-node": "^1.16.2"
+    },
+    "scripts" : {
+        "start" : "node app.js"
+    }
+}
