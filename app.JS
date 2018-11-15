@@ -1,17 +1,23 @@
-var http    = require('http');
-var message = 'starting!';
 
-//function display(data, callback){
-//
-//    var randInt = Math.random() * (10-1) + 1;
-//    var err = randInt>5 ? new Error()
-//}
+var http = require('http');
+
+var fs = require('fs');
+var zlib = require('zlib');
+
+var rs = fs.createReadStream('test.txt', 'utf8');
+var ws = fs.createWriteStream('some.txt');
+var gz = fs.createWriteStream('test.txt.gz');
+
+// rs.on('data', function(chunk){
+
+//     ws.write(chunk);
+// });
+
+//rs.pipe(ws);
+
+var gzip = zlib.createGzip();
+rs.pipe(gzip).pipe(ws);
 
 http.createServer(function(request, response){
 
-    console.log(message);
-    response.end(message);
-}).listen(3000, '127.0.0.1', ()=>{
-
-    console.log('server start listen dfbfbtrof requires');
-});
+}).listen(3000);
