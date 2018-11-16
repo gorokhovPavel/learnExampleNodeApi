@@ -3,15 +3,13 @@ var http = require('http');
 
 http.createServer(function(request, response){
 
-    fs.readFile('public/index.html', 'utf8', function(err,data){
+   if( request.url == '/some.doc' ){
 
-        var message = 'learn node.js';
-        var header = 'main page';
-        
-        data = data
-            .replace('{header}', header)
-            .replace('{message}', message);
+    response.writeHead(200, {"Content-Type" : "application/msword"})
+    fs.createReadStream('some.doc').pipe(response);
+   }
+   else {
 
-        response.end(data);
-    })
+    response.end('hello,as world!')
+   }
 }).listen(3000);
