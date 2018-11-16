@@ -1,15 +1,19 @@
-var fs = require('fs');
-var http = require('http');
+var express = require('express');
+var app = express();
 
-http.createServer(function(request, response){
+app.get('/', function(request, response){
 
-   if( request.url == '/some.doc' ){
+    response.send('<h2>hello, expr!</h2>');
+});
 
-    response.writeHead(200, {"Content-Type" : "application/msword"})
-    fs.createReadStream('some.doc').pipe(response);
-   }
-   else {
+app.get('/about', function(request, response){
 
-    response.end('hello,as world!')
-   }
-}).listen(3000);
+    response.send('<h1>About this site</h1>');
+});
+
+app.get('/contact', function(request, response){
+
+    response.send('<h1>Contacts list</h1>')
+})
+
+app.listen(3000);
