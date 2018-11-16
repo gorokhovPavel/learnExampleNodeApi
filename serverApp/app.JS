@@ -3,26 +3,15 @@ var http = require('http');
 
 http.createServer(function(request, response){
 
-    console.log(`address : ${request.url}`);
-    if(request.url.startsWith('/public')){
+    fs.readFile('public/index.html', 'utf8', function(err,data){
 
-        var filePath = request.url.substr(1);
-        fs.readFile(filePath, function(err, data){
+        var message = 'learn node.js';
+        var header = 'main page';
+        
+        data = data
+            .replace('{header}', header)
+            .replace('{message}', message);
 
-            if(err){
-                
-                response.statusCode = 404;
-                response.end('Resource not found!')
-            }
-            else {
-
-                response.end(data);
-            }
-            return;
-        })
-    } else {
-
-        response.end('hello, word!');
-    }
-
+        response.end(data);
+    })
 }).listen(3000);
