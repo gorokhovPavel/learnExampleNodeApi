@@ -8,7 +8,7 @@ app.get('/', function(request, response){
 
 app.get('/about', function(request, response){
 
-    response.send('<h1>About this site</h1>');
+    response.send('<h1>About this ssvwrite</h1>');
 });
 
 app.get('/contact', function(request, response){
