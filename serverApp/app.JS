@@ -6,11 +6,6 @@ app.get('/', function(request, response){
     response.send('<h2>hello, expr!</h2>');
 });
 
-app.get('/about', function(request, response){
-
-    response.send('<h1>About this ssvwrite</h1>');
-});
-
 app.get('/contact', function(request, response){
 
     response.send('<h1>Contacts list</h1>')
