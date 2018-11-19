@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var fs  = require('fs');
 var app = express();
+app.set('view engine', 'hbs');
 
 var urlEncoderParser = bodyParser.urlencoded({extended:false});
 

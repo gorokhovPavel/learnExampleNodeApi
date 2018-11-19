@@ -4,6 +4,7 @@
     "dependencies": {
         "body-parser": "^1.18.3",
         "express": "^4.16.4",
+        "hbs": "^4.0.1",
         "jasmine-node": "^1.16.2",
         "nodemon": "^1.18.6"
     },
