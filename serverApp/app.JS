@@ -7,14 +7,15 @@ var urlEncoderParser = bodyParser.urlencoded({extended:false});
 
 app.use(express.static(`${__dirname}/public`));
 
-app.post('/register', urlEncoderParser, function(request, response){
+var jsonParse = bodyParser.json();
+
+app.post('/register', jsonParse, function(request, response){
 
     if(!request.body)
         return response.sendStatus(400);
     
-    console.log(request.body);
-
-    response.send(`${request.body.userName}-${request.body.userAge}`);
+    //console.log(request.body);
+    return response.json(`${request.body.userName},${request.body.userAge}`);
 });
 
 app.get('/', function(request, response){
