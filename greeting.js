@@ -1,11 +1,15 @@
 const currentDate = new Date();
 
-module.exports.date = currentDate;
+global.date = currentDate;
+
+module.exports.name='vasya';
+module.exports.age = 12;
+
 module.exports.getMessage = function(name) {
     
     const start = 'Good';
     const hour = currentDate.getHours();
-    const end = (hour>16) ? 'Goog everning' : 'Good morning!';
+    const end = (hour>16) ? 'Goog everning' : 'Good morning';
 
-    return `${start} ${end}, ${name}`;
+    return `${start} ${end}, ${name}!`;
 }

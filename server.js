@@ -1,15 +1,14 @@
-const http = require("http");
-const greeting = require('./greeting.js')
-const os = require('os');
+const fs = require('fs');
+const address = './content/test.txt';
 
-let user = os.userInfo().username;
+fs.readFile(address, 'utf8', function(err, data) {
+    console.log('async read of file');
+    if( err ) throw err;
+    console.log(data);
+});
 
-console.log(user+'svrt');
-
-//http.createServer(function(request,response){
-//     
-//    response.end("Hello NodeJS!");
-//     
-//}).listen(3000, "127.0.0.1",function(){
-//    console.log("Сервер начал прослушивание запросов на порту 3000");
-//});
+fs.appendFile(address, ' bla-bla-bla', function(err, data){
+    console.log('async write of file!');
+    if( err ) throw err;
+    console.log(data);
+});
