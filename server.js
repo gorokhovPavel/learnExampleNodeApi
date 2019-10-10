@@ -1,16 +1,49 @@
 const fs = require('fs');
+const http = require('http');
 const zlib = require('zlib');
 const Emmiter = require('events');
-const address = './content/test.txt';
-const address2 = './content/test2.txt.gz';
-const emmiter = new Emmiter();
-const eventName = 'greet';
 
-const readStream = fs.createReadStream(address, 'utf8');
-const writeStream = fs.createWriteStream(address2);
-const gzip = zlib.createGzip();
+//const address = './content/test.txt';
+//const address2 = './content/test2.txt.gz';
+//const emmiter = new Emmiter();
+//const eventName = 'greet';
 
-readStream.pipe(gzip).pipe(writeStream);
+//const readStream = fs.createReadStream(address, 'utf8');
+//const writeStream = fs.createWriteStream(address2);
+//const gzip = zlib.createGzip();
+//readStream.pipe(gzip).pipe(writeStream);
+
+http.createServer( (req, res)=> {
+    
+    const filePath = req.url.substr(1);
+    const existFile = `./content/${filePath}`;
+    
+    const header = 'ascfesrgve';
+    const message  = '1232134213';
+
+    // fs.access( existFile, fs.constants.R_OK, err=>{
+    //     if(err){
+    //         res.statusCode = 404;
+    //         res.end('Res not found');
+    //     } else {
+    //         //console.log(existFile);
+            
+    //         fs.createReadStream(existFile).pipe(res);
+    //     }
+    // });
+
+    fs.readFile( existFile, 'utf8', (err, data)=> {
+        if(err){
+            res.statusCode = 404;
+            res.end('Not found');
+        } else {
+            data = data.replace("{header}", header).replace("{message}", message);
+            res.end(data);
+        }
+    });
+
+    //res.end();
+}).listen(3000);
 
 // const ws = fs.createWriteStream(address);
 // ws.write('Hello');
