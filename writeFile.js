@@ -13,35 +13,27 @@ module.exports = function writeFile( filepath, req, res ){
 
     maxStream.on('error', err=>{
         if (err) {
-            fs.unlink(filepath, ()=>{});
             res.statusCode = 413;
             res.end('more than max limit');
-            return;
+            fs.unlink(filepath, ()=>{});
         } 
     });
 
     saveStream.on('error', (err, data) => {
         if (err.code === 'EEXIST') {
-          res.statusCode = 409;
-          res.end('File already exists');
-          return;
+        //   res.statusCode = 409;
+        //   res.end('File already exists');
         } else {
             res.statusCode = 500;
-            fs.unlink(filepath, ()=>{});
             res.end(`Unknown error : ${err}`);
-            return;
         }
     }).on('close', (err, data) => {
-        res.statusCode = 201;
-        //fs.unlink(filepath, ()=>{});
-        res.end('success');
-        return;
+        if(err){
+            fs.unlink(filepath, ()=>{});
+            res.end();
+        } else {
+            res.statusCode = 201;
+            res.end('success');
+        }
     });
-
-    // res.on('close', (err, data) => {
-    //     if (res.finished) return;
-    //     //fs.unlink(filepath, ()=>{});
-    //     res.end();
-    //     return;
-    // });
 }
