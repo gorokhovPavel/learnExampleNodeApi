@@ -22,3 +22,5 @@ const schema = new mongoose.Schema({
         type : String
     }]
 });
+
+module.exports = connection.model('Product', schema);
