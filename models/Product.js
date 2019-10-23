@@ -1,26 +1,35 @@
 const mongoose = require('mongoose');
-const connection = require('../lib/connection');
+const connection = require('../libs/connection');
 
-const schema = new mongoose.Schema({
-    title : {
-        type : String,
-        required : true
-    },
-    description : {
-        type : String,
-        required : true
-    },
-    price : {
-        type : Number,
-        required : true
-    },
-    subcategory : {
-        type : mongoose.Schema.Types.ObjectId,
-        required : true
-    },
-    images : [{
-        type : String
-    }]
+const productSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+
+  description: {
+    type: String,
+    required: true,
+  },
+
+  price: {
+    type: Number,
+    required: true,
+  },
+
+  category: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Category',
+    required: true,
+  },
+
+  subcategory: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+  },
+
+  images: [String],
+
 });
 
-module.exports = connection.model('Product', schema);
+module.exports = connection.model('Product', productSchema);
