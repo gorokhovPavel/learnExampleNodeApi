@@ -4,6 +4,8 @@ const {productsBySubcategory, productList, productById} = require('./controllers
 const {categoryList} = require('./controllers/categories');
 const {productsByQuery} = require('./controllers/products');
 const {login} = require('./controllers/login');
+const handleMongooseValidationError = require('./libs/validationErrors');
+const {oauth, oauthCallback} = require('./controllers/oauth');
 
 const app = new Koa();
 app.use(require('koa-bodyparser')());
@@ -36,6 +38,8 @@ router.get('/products/:id', productById);
 router.get('/products', productsByQuery);
 
 router.post('/login', login);
+router.get('/oauth/:provider', oauth);
+router.post('/oauth_callback', handleMongooseValidationError, oauthCallback);
 
 app.use(router.routes());
 module.exports = app;
