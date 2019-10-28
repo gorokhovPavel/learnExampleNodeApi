@@ -5,23 +5,6 @@ const Category = require('../models/Category');
 
 module.exports.productsBySubcategory = async function productsBySubcategory(ctx, next) {
   try {
-
-    let category = await Category.create({
-      title: 'Category2',
-      subcategories: [{
-        title: 'Subcategory2',
-      }],
-    });
-
-    let product = await Product.create({
-      title: 'Product2',
-      description: 'Description2',
-      price: 10,
-      category: category.id,
-      subcategory: category.subcategories[0].id,
-      images: ['image1'],
-    });
-
     //Пытаемся передать данные в следующий стрим
     const productsArr = await Product.find();
     ctx.productsList = productsArr;
@@ -60,4 +43,37 @@ module.exports.productById = async function productById(ctx, next) {
   ctx.body = { product : formatResponse(productElem) };
 
   await next();
+};
+
+module.exports.productsByQuery = async function productsByQuery(ctx, next) {
+  const {query} = ctx.request.query;
+
+  let productModel = {};
+
+  try {
+    productModel = await require('./../models/Product');
+
+    productModel.on('index', function(error) {
+      if (error) {
+        throw error;
+      }
+    });
+
+    const productList = await productModel.find({
+      $text: {
+        $search: `\"${query}\"`,
+        $language: 'ru',
+      },
+    });
+
+    ctx.status = 200;
+    ctx.body = { products: [...productList] };
+  } catch (err) { 
+    productModel.db.close();
+
+    ctx.status = 500;
+    ctx.body = 'BD error';
+
+    throw err;
+  };
 };

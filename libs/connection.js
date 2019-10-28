@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
-const mongooseUniquePlugin = require('mongoose-beautiful-unique-validation');
+const beautifyUnique = require('mongoose-beautiful-unique-validation');
+const config = require('../config');
 
-mongoose.set('debug', true);
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
-mongoose.plugin(mongooseUniquePlugin);
+mongoose.set('debug', false);
 
-module.exports = mongoose.createConnection('mongodb://localhost:27017/local');
+mongoose.plugin(beautifyUnique);
+
+module.exports = mongoose.createConnection(config.mongodb.uri);
