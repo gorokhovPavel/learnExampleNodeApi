@@ -4,7 +4,7 @@ const connection = require('../libs/connection');
 const schema = new mongoose.Schema({
   token: {
     type: String,
-    unique: true,
+    unique: false,
     required: true,
   },
   lastVisit: {
