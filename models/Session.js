@@ -9,7 +9,7 @@ const schema = new mongoose.Schema({
   },
   lastVisit: {
     type: Date,
-    required: true,
+    required: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
