@@ -1,7 +1,7 @@
 module.exports = [{
     email: 'user1@mail.com',
     displayName: 'user1',
-    password: '123123',
+    password: '123666',
   }, {
     email: 'user2@mail.com',
     displayName: 'user2',
