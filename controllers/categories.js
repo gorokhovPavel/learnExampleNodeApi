@@ -2,6 +2,7 @@ const Category = require('../models/Category');
 const { formatResponse } = require('../libs/formatResponse');
 
 module.exports.categoryList = async function categoryList(ctx, next) {
+  
   const response = await Category.find();
   const categoryList = response.map((model) => {
     model = formatResponse(model._doc);
