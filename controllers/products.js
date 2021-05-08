@@ -5,7 +5,6 @@ const Category = require('../models/Category');
 
 module.exports.productsBySubcategory = async function productsBySubcategory(ctx, next) {
   try {
-    //Пытаемся передать данные в следующий стрим
     const productsArr = await Product.find();
     ctx.productsList = productsArr;
     await next(); 
@@ -15,7 +14,6 @@ module.exports.productsBySubcategory = async function productsBySubcategory(ctx,
 };
 
 module.exports.productList = async function productList(ctx, next) {
-  //Подтягиваем данные из предыдущего стрима и передаем в следующий
   const {productsList} = ctx;
   ctx.body = {products: productsList.map((product) => formatResponse(product._doc))};
 };
