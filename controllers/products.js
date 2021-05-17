@@ -25,7 +25,7 @@ module.exports.productById = async function productById(ctx, next) {
     new mongoose.Types.ObjectId(id);
   } catch (err) {
     ctx.status = 400;
-    ctx.body = 'Bad id';
+    ctx.body = 'Bad request id';
     return;
   }
 
