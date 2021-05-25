@@ -18,6 +18,7 @@ describe('6-module-2-task', () => {
     let product;
 
     before(async () => {
+      
       await Category.deleteMany();
       await Product.deleteMany();
 
