@@ -2,6 +2,7 @@ module.exports.formatResponse = data=> {
     const newData = {};
     
     for ( key in data ) {
+        
         switch (key) {
           case '_id' :
             newData.id = data[key];
