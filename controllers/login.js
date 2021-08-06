@@ -9,7 +9,7 @@ module.exports.login = async function login(ctx, next) {
     if (err) 
       throw err;
     if (!user) {
-      ctx.status = 404;
+      ctx.status = 400;
       ctx.body = {error: info};
       return;
     }
