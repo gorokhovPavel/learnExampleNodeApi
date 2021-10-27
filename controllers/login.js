@@ -12,7 +12,6 @@ module.exports.login = async function login(ctx, next) {
       ctx.body = {error: info};
       return;
     }
-    
     const token = uuid();
     ctx.body = {token};
   })(ctx, next);
