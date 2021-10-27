@@ -15,4 +15,4 @@ module.exports.login = async function login(ctx, next) {
     const token = uuid();
     ctx.body = {token};
   })(ctx, next);
-};
+}
