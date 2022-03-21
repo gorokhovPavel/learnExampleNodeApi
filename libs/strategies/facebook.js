@@ -3,6 +3,7 @@ const config = require('../../config');
 const get = require('lodash/get');
 const authenticate = require('./authenticate');
 
+
 module.exports = new FacebookStrategy({
   clientID: config.providers.facebook.app_id,
   clientSecret: config.providers.facebook.app_secret,
