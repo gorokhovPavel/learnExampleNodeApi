@@ -2,6 +2,7 @@ const VkontakteStrategy = require('passport-vkontakte').Strategy;
 const config = require('../../config');
 const authenticate = require('./authenticate');
 
+
 module.exports = new VkontakteStrategy({
   clientID: config.providers.vkontakte.app_id,
   clientSecret: config.providers.vkontakte.app_secret,
