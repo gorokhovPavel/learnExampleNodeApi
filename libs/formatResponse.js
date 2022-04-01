@@ -12,6 +12,5 @@ module.exports.formatResponse = data=> {
             newData[key] = data[key];
         };
     }
-    
     return newData;
   };
