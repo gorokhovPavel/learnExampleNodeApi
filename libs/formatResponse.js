@@ -1,4 +1,4 @@
-module.exports.formatResponse = data=> {
+module.exports.formatResponse = data => {
     
     const newData = {};
     
