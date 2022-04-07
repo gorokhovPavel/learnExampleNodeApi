@@ -14,7 +14,6 @@ module.exports.oauth = async function oauth(ctx, next) {
   ctx.body = {status: 'Ok', location: ctx.response.get('location')};
 };
 
-
 module.exports.oauthCallback = async function oauthCallback(ctx, next) {
   const provider = ctx.request.body.provider;
 
