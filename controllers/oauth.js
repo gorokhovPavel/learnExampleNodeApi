@@ -5,7 +5,6 @@ const uuid = require('uuid/v4');
 module.exports.oauth = async function oauth(ctx, next) {
   const provider = ctx.params.provider;
 
-  
   await passport.authenticate(
       provider,
       config.providers[provider].options,
