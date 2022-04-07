@@ -2,7 +2,6 @@ const passport = require('../libs/passport');
 const config = require('../config');
 const uuid = require('uuid/v4');
 
-
 module.exports.oauth = async function oauth(ctx, next) {
   const provider = ctx.params.provider;
 
