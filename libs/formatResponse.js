@@ -1,6 +1,7 @@
 module.exports.formatResponse = data => {
     
-    const newData = {};
+    const newData = {
+    };
     
     for ( key in data ) {
         switch (key) {
