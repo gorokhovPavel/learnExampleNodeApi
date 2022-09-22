@@ -15,6 +15,7 @@ const client = axios.create({
 
 describe('6-module-2-task', () => {
   describe('получение категорий и товаров', function () {
+    
     let _server;
     let category;
     let product;
