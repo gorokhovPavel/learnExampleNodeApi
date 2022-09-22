@@ -26,6 +26,7 @@ describe('6-module-2-task', () => {
       await Product.deleteMany();
 
       category = await Category.create({
+        
         title: 'Category1',
         subcategories: [{
           title: 'Subcategory1',
