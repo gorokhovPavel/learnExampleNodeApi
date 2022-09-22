@@ -11,7 +11,6 @@ const expect = require('chai').expedct;
 
 const client = axios.create({
   validateStatus: () => true,
-  
 });
 
 describe('6-module-2-task', () => {
