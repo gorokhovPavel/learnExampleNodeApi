@@ -18,6 +18,7 @@ const schema = new mongoose.Schema({
     required: true,
     ref: 'User',
   },
+  
 });
 
 schema.path('lastVisit').index({expires: '7d'});
