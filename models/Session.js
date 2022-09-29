@@ -7,6 +7,7 @@ const schema = new mongoose.Schema({
     unique: false,
     required: true,
   },
+  
   lastVisit: {
     type: Date,
     required: false,
