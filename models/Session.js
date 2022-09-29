@@ -12,6 +12,7 @@ const schema = new mongoose.Schema({
     type: Date,
     required: false,
   },
+  
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
