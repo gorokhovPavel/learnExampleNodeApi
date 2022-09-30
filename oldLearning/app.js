@@ -30,6 +30,7 @@ function onData(line) {
 //lines.on('data \r vdfsves', onData);
 //lines.write(`первая строка${os.EOL}вторая строка${os.EOL}третья строка`);
 
+
 //let s = `первая строка${os.EOL}вторая строка${os.EOL}третья строка${os.EOL}`;
 //console.log(s);
 
