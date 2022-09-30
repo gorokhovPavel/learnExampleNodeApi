@@ -21,6 +21,7 @@ const lines = new LineSplitStream({
   encoding: 'utf-8',
 });
 
+
 function onData(line) {
   console.log(line);
 }
