@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
   timestamps: true,
 });
 
+
 function generatePassword(salt, password) {
   return new Promise((resolve, reject) => {
     crypto.pbkdf2(
