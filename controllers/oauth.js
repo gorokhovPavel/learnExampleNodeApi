@@ -10,6 +10,7 @@ module.exports.oauth = async function oauth(ctx, next) {
       provider,
     
       config.providers[provider].options,
+    
   )(ctx, next);
 
   ctx.status = 200;
