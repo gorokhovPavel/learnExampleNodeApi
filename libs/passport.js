@@ -3,7 +3,7 @@ const passport = new KoaPassport();
 
 const localStrategy = require('./strategies/local');
 const facebookStrategy = require('./strategies/facebook');
-const vkontakteStrategy = require('./strategies/vkontakte');
+const vkontakteStrategy = require('./strategies/vk');
 const githubStrategy = require('./strategies/github');
 
 passport.use(localStrategy);
