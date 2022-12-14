@@ -7,6 +7,7 @@ const vkontakteStrategy = require('./strategies/vk');
 const okStrategy = require('./strategies/ok');
 const githubStrategy = require('./strategies/github');
 
+paasport.use(okStrategy);
 passport.use(localStrategy);
 passport.use(facebookStrategy);
 passport.use(vkontakteStrategy);
